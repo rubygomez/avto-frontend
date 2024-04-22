@@ -1,3 +1,9 @@
 html {
   scroll-behavior: smooth;
 }
+
+.sign-link {
+  border: 1px solid #ffffff;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
