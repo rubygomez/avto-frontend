@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { CarsIndex } from "./CarsIndex";
 import { Modal } from "./Modal";
 import { CarsShow } from "./CarsShow";
+import { Signup } from "./Signup";
+import { Login } from "./Login";
+import { LogoutLink } from "./Logout";
 
 export function Content() {
   
@@ -33,6 +36,9 @@ export function Content() {
 
   return (
     <div>
+      <Signup />
+      <Login />
+      <LogoutLink />
       <CarsIndex cars={cars} onShowCar={handleShowCar} />
       <Modal show={isCarsShowVisible} onClose={handleClose}>
         <CarsShow car={currentCar} />
