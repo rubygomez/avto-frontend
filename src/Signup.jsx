@@ -13,7 +13,7 @@ export function Signup() {
             event.target.reset();
             window.location.href = "/"; //change this to hide a modal, refirect to a specificc page, etc
         })
-        .catch((errors) => {
+        .catch((error) => {
             console.log(error.response.data.errors);
             setErrors(error.response.data.errors);
         });

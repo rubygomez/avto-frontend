@@ -2,12 +2,7 @@ import { useParams } from "react-router-dom";
 import "./Modal.css";
 
 export function Modal(props) {
-    const { id } = useParams();   //extract id from url
 
-    const handleRedirect = () => {
-        window.location.href = `/bookings/${id}`;
-        props.onClose();
-    };
 
     if (props.show) {
         return (
@@ -17,9 +12,11 @@ export function Modal(props) {
                     <button className="close" type="button" onClick={props.onClose}>
                         &#x2715;
                     </button>
-                    <button className="book" type="button" onClick={handleRedirect}>
-                        Book Now!
-                    </button>
+                    {/* <Link to={`/bookings/${booking.id}`}>
+                        <button onClick={() => props.}>
+
+                        </button>
+                    </Link> */}
                 </section>
             </div>
         );

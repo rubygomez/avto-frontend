@@ -9,6 +9,7 @@ import { Login } from "./Login";
 import { LogoutLink } from "./Logout";
 import { BookingsIndex } from "./BookingsIndex";
 import { BookingsNew } from "./BookingsNew";
+import { BModal } from "./BModal";
 
 
 export function Content() {
@@ -17,6 +18,8 @@ export function Content() {
   const [isCarsShowVisible, setIsCarsShowVisible] = useState(false);
   const [currentCar, setCurrentCar] = useState({});
   const [bookings, setBookings] = useState([]);
+  const [isBookingsShowVisible, setIsBookingsShowVisible] = useState(false);
+  const [currentBpoking, setCurrentBooking] = useState({});
 
   const handleIndexCars = () => {                                           //function to fetch list of cars from backend
     console.log("handleIndexCars");
@@ -27,9 +30,9 @@ export function Content() {
   };
   const handleIndexBookings = () => {                                           
     console.log("handleIndexBookings");
-    axios.get("http://localhost:3000/cars.json").then((response) => {       
+    axios.get("http://localhost:3000/bookings.json").then((response) => {       
       console.log(response.data);
-      setCars(response.data)                                                
+      setBookings(response.data);                                                
     });
   };
 
@@ -39,7 +42,7 @@ export function Content() {
     setCurrentCar(car);
   };
 
-  const handleClose = () => {
+  const handleCarClose = () => {
     console.log("handleClose");
     setIsCarsShowVisible(false);
   };
@@ -50,6 +53,17 @@ export function Content() {
       setBookings([...bookings, response.data]);
       successCallback();
     });
+  };
+
+  const handleShowBooking = (booking) => {
+    console.log("handleShowBooking", booking);
+    setIsBookingsShowVisible(true);
+    setCurrentBooking(booking);
+  };
+
+  const handleBookingClose = () => {
+    console.log("handleClose");
+    setIsBookingsShowVisible(false);
   };
 
 
@@ -67,11 +81,14 @@ export function Content() {
         <Login />
         <LogoutLink />
         <CarsIndex cars={cars} onShowCar={handleShowCar} />
-        <Modal show={isCarsShowVisible} onClose={handleClose}>
+        <Modal show={isCarsShowVisible} onClose={handleCarClose}>
           <CarsShow car={currentCar} />
         </Modal>
-        <BookingsIndex bookings={bookings} />
+        <BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} />
         <BookingsNew onCreateBooking={handleCreateBooking} />
+        <BModal show={isBookingsShowVisible} onClose={handleBookingClose}>
+          <BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} />
+        </BModal>
       </div>
     </main>
   );
