@@ -13,7 +13,7 @@ export function Login() {
         event.preventDefault();
         setErrors([]);
         const params = new FormData(event.target);
-        axios.post("http://localhost:3000/sessions.json", params).then((response) => {
+        axios.post("https://avto-backend.onrender.com/sessions.json", params).then((response) => {
             console.log(response.data);
             axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
             localStorage.setItem("jwt", response.data.jwt);
