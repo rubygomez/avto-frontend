@@ -1,4 +1,4 @@
-import "./Modal.css";
+import "./BModal.css";
 
 export function BModal(props) {
     if (props.show) {
@@ -11,6 +11,6 @@ export function BModal(props) {
                     </button>
                 </section>
             </div>
-        )
-    };
+        );
+    }
 }

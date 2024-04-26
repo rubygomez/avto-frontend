@@ -8,6 +8,7 @@ export function BookingsIndex(props) {
                     <h1>{booking.book_start}</h1>
                     <h1>{booking.book_end}</h1>
                     <h1>{booking.total_price}</h1>
+                    <button onClick={() => props.onShowBooking(booking)}>More Info</button>
                 </div>
             ))}
         </div>
