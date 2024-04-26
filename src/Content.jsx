@@ -24,14 +24,14 @@ export function Content() {
 
   const handleIndexCars = () => {                                           //function to fetch list of cars from backend
     console.log("handleIndexCars");
-    axios.get("http://localhost:3000/cars.json").then((response) => {       //GET request
+    axios.get("https://avto-backend.onrender.com/cars.json").then((response) => {       //GET request
       console.log(response.data);
       setCars(response.data)                                                //updates the "cars" state variable w the new data fetched
     });
   };
   const handleIndexBookings = () => {                                           
     console.log("handleIndexBookings");
-    axios.get("http://localhost:3000/bookings.json").then((response) => {       
+    axios.get("https://avto-backend.onrender.com/bookings.json").then((response) => {       
       console.log(response.data);
       setBookings(response.data);                                                
     });
@@ -50,7 +50,7 @@ export function Content() {
 
   const handleCreateBooking = (params, successCallback) => {
     console.log("handleCreateBooking", params);
-    axios.post("http://localhost:3000/bookings.json", params).then((response) => {
+    axios.post("https://avto-backend.onrender.com/bookings.json", params).then((response) => {
       setBookings([...bookings, response.data]);
       successCallback();
     });
