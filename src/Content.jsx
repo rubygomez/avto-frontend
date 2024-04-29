@@ -75,6 +75,7 @@ export function Content() {
   return (
     <main>
       <Routes>
+        {/* <Route path="/home" element={<} */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
@@ -97,3 +98,4 @@ export function Content() {
     </main>
   );
 }
+
