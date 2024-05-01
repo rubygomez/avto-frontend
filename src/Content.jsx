@@ -1,7 +1,8 @@
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 import "./index.css";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { CarsIndex } from "./CarsIndex";
 import { Modal } from "./Modal";
 import { CarsShow } from "./CarsShow";
@@ -77,7 +78,7 @@ export function Content() {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Home replace to="/cars"/>} />
+        <Route path="/" element={<Navigate replace to="/cars"/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
