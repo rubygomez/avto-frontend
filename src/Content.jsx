@@ -77,7 +77,7 @@ export function Content() {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home replace to="/cars"/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
