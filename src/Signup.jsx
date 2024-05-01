@@ -21,7 +21,7 @@ export function Signup() {
 
     return (
         <div id="signup">
-            <h1>Signup</h1>
+            <h1>Join Now</h1>
             <ul>
                 {errors.map((error) => (
                     <li key={error}>{error}</li>

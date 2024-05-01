@@ -4,7 +4,7 @@ export function CarsShow(props) {
         <div>
             <h1>Car Info</h1>
             <h3>{props.car.year} {props.car.make} {props.car.model}</h3>
-            <p> img: {props.car.image_url} </p>
+            <img src={props.car.image_url} />
             <p>Color: {props.car.color}</p>
             <p>Seats: {props.car.seats}</p>
             <p>Transmission: {props.car.transmission}</p>

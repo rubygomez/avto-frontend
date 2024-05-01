@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./index.css";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { CarsIndex } from "./CarsIndex";
@@ -11,9 +12,10 @@ import { BookingsIndex } from "./BookingsIndex";
 import { BookingsNew } from "./BookingsNew";
 import { BModal } from "./BModal";
 import { BookingsShow } from "./BookingsShow";
-
+import { Home } from "../Home";
 
 export function Content() {
+  <img src="https://images.pexels.com/photos/1082655/pexels-photo-1082655.jpeg?auto=compress&cs=tinysrgb&w=600" className="img-fluid" alt="main-image"></img>
   
   const [cars, setCars] = useState([]);                                     //defines state variable "cars". defines function "setCars" to handle updates
   const [isCarsShowVisible, setIsCarsShowVisible] = useState(false);
@@ -24,7 +26,7 @@ export function Content() {
 
   const handleIndexCars = () => {                                           //function to fetch list of cars from backend
     console.log("handleIndexCars");
-    axios.get("https://avto-backend.onrender.com/cars.json").then((response) => {       //GET request
+    axios.get("https://avto-backend.onrender.com").then((response) => {       //GET request
       console.log(response.data);
       setCars(response.data)                                                //updates the "cars" state variable w the new data fetched
     });
@@ -75,7 +77,7 @@ export function Content() {
   return (
     <main>
       <Routes>
-        {/* <Route path="/home" element={<} */}
+        <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
@@ -98,4 +100,5 @@ export function Content() {
     </main>
   );
 }
+
 

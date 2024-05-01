@@ -1,3 +1,54 @@
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  background-color: black;
+}
+/* AVTO brand */
+.avto-brand {
+  font-family:'Times New Roman', Times, serif;
+  color: rgb(255, 255, 255);
+}
+/* Signup Link */
+.navbar .nav-item .nav-link.signup-link {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing:auto;
+  font-weight: 300;
+  font-style: normal;
+  color: white;
+  border: 4px;
+  border-bottom: 2px;
+  padding: 10px;
+  background-color: black;
+  border-radius: 20px;
+}
+/* Signup Hover  */
+.navbar .nav-item .nav-link.signup-link:hover {
+  /* background-color: rgba(101, 101, 101, 0.59); */
+  background-color: rgb(134, 42, 42);
+  color: white;
+  border-color: white;
+}
+/* Login Link */
+.navbar .nav-item .nav-link.login-link {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing:șuto;
+  font-weight: 300;
+  font-style: normal;
+  border: 2px;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: rgba(101, 101, 101, 0.428);
+}
+/* Login Hover */
+.navbar .nav-item .nav-link.login-link:hover {
+  background-color: rgb(255, 255, 255);
+  border-color: black;
+}
+
+.bg-image .d-flex .justify-content-center .align-items-center {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}

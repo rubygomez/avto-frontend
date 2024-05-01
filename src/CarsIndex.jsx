@@ -52,7 +52,7 @@ export function CarsIndex(props) {
                         <div className="card" style={{ maxWidth: "540px"}}>
                             <div className="row g-0">
                                 <div style={{ maxHeight: "200px", width: "100%"}}>  
-                                    <img src={car.image_url} className="img-fluid rounded-start" alt={`${car.year} ${car.make} &{car.model}`} style={{ width:"100%", height: "200px", objectFit:"cover" }} />
+                                    <img src={car.image_url} className="img-fluid rounded-start" alt={`${car.year} ${car.make} ${car.model}`} style={{ width:"100%", height: "200px", objectFit:"cover" }} />
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
