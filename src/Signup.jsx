@@ -8,7 +8,7 @@ export function Signup() {
         event.preventDefault();
         setErrors([]);
         const params = new FormData(event.target);
-        axios.post("https://avto-backend.onrender.com/users.json", params).then((response) => {
+        axios.post("http://localhost:3000", params).then((response) => {
             console.log(response.data);
             event.target.reset();
             window.location.href = "/"; //change this to hide a modal, refirect to a specificc page, etc

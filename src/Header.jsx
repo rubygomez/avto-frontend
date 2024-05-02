@@ -8,7 +8,7 @@ export function Header() {
             <div className="row">
               <div className="col text-center">
                 <div className="avto-brand">
-                  <Link to="/" className="nav-link text-dark" style={{fontSize: "50px"}}>A V T O</Link>
+                  <Link to="/home" className="nav-link text-dark" style={{fontSize: "50px"}}>A V T O</Link>
                 </div>
               </div>
               <div className="col-auto">
