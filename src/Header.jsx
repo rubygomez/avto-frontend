@@ -28,9 +28,6 @@ export function Header() {
                 <li className="nav-item">
                   <a className="nav-link text-dark" href="#">Pricing</a>
                 </li>
-                <li className="nav-item">
-                  <Link to="/bookings/new" className="nav-link text-dark">New Booking</Link>
-                </li>
               </ul>
             </div>
             <ul className="navbar-nav">

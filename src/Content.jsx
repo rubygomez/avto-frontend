@@ -9,9 +9,9 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./Logout";
 import { BookingsIndex } from "./BookingsIndex";
-import { BookingsNew } from "./BookingsNew";
+// import { BookingsNew } from "./BookingsNew";
 import { BModal } from "./BModal";
-import { BookingsShow } from "./BookingsShow";
+// import { BookingsShow } from "./BookingsShow";
 import { Home } from "./Home";
 
 export function Content() {
@@ -25,39 +25,13 @@ export function Content() {
   const [currentBooking, setCurrentBooking] = useState({});
 
 
-  // useEffect(() => {
-  //   const fetchCars = async () => {
-  //     const options = {
-  //       method: 'GET',
-  //       url: 'https://car-data.p.rapidapi.com/cars',
-  //       params: {
-  //         limit: '10',
-  //         page: '0'
-  //       },
-  //       headers: {
-  //         'X-RapidAPI-Key': '5e9b80b49bmsh4f5872a9af6f4bdp18b3b8jsn39df14db7676',
-  //         'X-RapidAPI-Host': 'car-data.p.rapidapi.com'
-  //       }
-  //     };
-
-  //     try {
-  //       const response = await axios.request(options);
-  //       console.log(response.data); 
-  //       setCarData(response.data);// Assuming the API response is an array of car objects
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchCars();
-  // }, []);
-
+  
 
   const handleIndexCars = () => {                                           //function to fetch list of cars from backend
     console.log("handleIndexCars");
     axios.get("http://localhost:3000/cars.json").then((response) => {       //GET request
-      console.log(response.data);
-      setCars(response.data)                                                //updates the "cars" state variable w the new data fetched
+      console.log(response);
+      setCars(response.data);                                             //updates the "cars" state variable w the new data fetched
     });
   };
   const handleIndexBookings = () => {                                           
@@ -81,7 +55,7 @@ export function Content() {
 
   const handleCreateBooking = (params, successCallback) => {
     console.log("handleCreateBooking", params);
-    axios.post("http://localhost:3000/bookings", params).then((response) => {
+    axios.post("http://localhost:3000/bookings.json", params).then((response) => {
       setBookings([...bookings, response.data]);
       successCallback();
     });
@@ -110,12 +84,12 @@ export function Content() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
-        <Route path="/cars" element={<CarsIndex cars={cars} />} />
-        {/* <Route path="/cars" element={<CarsIndex carData={carData} />} /> */}
+        <Route path="/cars" element={<CarsIndex cars={cars} onCreateBooking={handleCreateBooking} onShowCar={handleShowCar} />} />
+        <Route path="/cars" element={<CarsIndex carData={carData} />} />
         <Route path="/cars/:id" element={<CarsShow />} />
         <Route path="/bookings" element={<BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} /> } />
-        <Route path="/bookings/new" element={<BookingsNew onCreateBooking={handleCreateBooking} />} />
-      </Routes>
+        {/* <Route path="/bookings/new" element={<BookingsNew onCreateBooking={handleCreateBooking} />} /> */}
+      </Routes> 
       <div className="container">
         {/* <CarsIndex cars={cars} onShowCar={handleShowCar} /> */}
         <Modal show={isCarsShowVisible} onClose={handleCarClose}>
@@ -123,9 +97,9 @@ export function Content() {
         </Modal>
         {/* <BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} /> */}
         {/* <BookingsNew onCreateBooking={handleCreateBooking} /> */}
-        <BModal show={isBookingsShowVisible} onClose={handleBookingClose}>
+        {/* <BModal show={isBookingsShowVisible} onClose={handleBookingClose}>
           <BookingsShow booking={currentBooking} />
-        </BModal>
+        </BModal> */}
       </div>
       {/* <div className="container">
             <div className="row">
