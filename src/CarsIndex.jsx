@@ -47,7 +47,7 @@ export function CarsIndex(props) {
     return (
         <div>
             <h1>All Vroomz</h1>
-            <div className="row row-cols-1 row-cols-md-2">
+            <div className="row row-cols-1 row-cols-md-3">
                 {props.cars.map((car) => (
                     <div key={car.id} className="col mb-">
                         <div className="card" style={{ maxWidth: "540px"}}>

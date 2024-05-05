@@ -1,6 +1,9 @@
+import { Dropdown } from "bootstrap";
 import { Link } from "react-router-dom";
 
 export function Header() {
+ 
+  
     return (
       <header>
         <nav className="navbar navbar-expand-lg" style={{ height: "64px", padding: "0 10px"}}>
@@ -29,6 +32,18 @@ export function Header() {
                   <a className="nav-link text-dark" href="#">Pricing</a>
                 </li>
               </ul>
+            </div>
+            <div className="dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Button
+              </button>
+              <ul className="dropdown-menu">
+                <li><a className="dropdown-item" href="#">1</a></li>
+                <li><a className="dropdown-item" href="#">2</a></li>
+                <li><a className="dropdown-item" href="#">3</a></li>
+
+              </ul>
+
             </div>
             <ul className="navbar-nav">
               <li className="nav-item">

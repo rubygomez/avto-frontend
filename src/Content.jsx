@@ -9,13 +9,11 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./Logout";
 import { BookingsIndex } from "./BookingsIndex";
-// import { BookingsNew } from "./BookingsNew";
-import { BModal } from "./BModal";
-// import { BookingsShow } from "./BookingsShow";
 import { Home } from "./Home";
+// import { Header } from "./Header";
 
 export function Content() {
-  
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [cars, setCars] = useState([]);                                     //defines state variable "cars". defines function "setCars" to handle updates
   const [isCarsShowVisible, setIsCarsShowVisible] = useState(false);
   const [carData, setCarData] = useState(null);
@@ -25,6 +23,15 @@ export function Content() {
   const [currentBooking, setCurrentBooking] = useState({});
 
 
+  // useEffect(() => {
+  //   const jwt = localStorage.getItem("jwt");
+  //   setIsAuthenticated(!!jwt); // set isAuthenticated to TRUE if JWT exists
+  //   console.log("this in content", isAuthenticated);
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log("isAuthenticated changed in Content:", isAuthenticated);
+  // }, [isAuthenticated]);
   
 
   const handleIndexCars = () => {                                           //function to fetch list of cars from backend
@@ -78,37 +85,24 @@ export function Content() {
   useEffect(handleIndexBookings, []);
 
   return (
-    <main>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<LogoutLink />} />
-        <Route path="/cars" element={<CarsIndex cars={cars} onCreateBooking={handleCreateBooking} onShowCar={handleShowCar} />} />
-        <Route path="/cars" element={<CarsIndex carData={carData} />} />
-        <Route path="/cars/:id" element={<CarsShow />} />
-        <Route path="/bookings" element={<BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} /> } />
-        {/* <Route path="/bookings/new" element={<BookingsNew onCreateBooking={handleCreateBooking} />} /> */}
-      </Routes> 
-      <div className="container">
-        {/* <CarsIndex cars={cars} onShowCar={handleShowCar} /> */}
-        <Modal show={isCarsShowVisible} onClose={handleCarClose}>
-          <CarsShow car={currentCar} />
-        </Modal>
-        {/* <BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} /> */}
-        {/* <BookingsNew onCreateBooking={handleCreateBooking} /> */}
-        {/* <BModal show={isBookingsShowVisible} onClose={handleBookingClose}>
-          <BookingsShow booking={currentBooking} />
-        </BModal> */}
-      </div>
-      {/* <div className="container">
-            <div className="row">
-                <div className="col">
-                    <img src="https://images.pexels.com/photos/1082655/pexels-photo-1082655.jpeg?auto=compress&cs=tinysrgb&w=600" className="img-fluid w-100" alt="main-image" />
-                </div>
-            </div>
-        </div> */}
-    </main>
+    <>
+      <main>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />}
+          <Route path="/login" element={<Login />} />}
+          <Route path="/logout" element={<LogoutLink />} />}
+          <Route path="/cars" element={<CarsIndex cars={cars} onCreateBooking={handleCreateBooking} onShowCar={handleShowCar} />} />
+          <Route path="/cars/:id" element={<CarsShow />} />
+          <Route path="/bookings" element={<BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} /> } />
+        </Routes> 
+        <div className="container">
+          <Modal show={isCarsShowVisible} onClose={handleCarClose}>
+            <CarsShow car={currentCar} />
+          </Modal>
+        </div>
+      </main>
+    </>
   );
 }
 
