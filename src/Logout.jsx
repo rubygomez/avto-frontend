@@ -1,16 +1,22 @@
-import axios from "axios";
+// import axios from "axios";
+// import { useState } from "react";
+// import { useParams } from "react-router-dom";
 
-export function LogoutLink() {
-    const handleClick = (event) => {
-        event.preventDefault();
-        delete axios.defaults.headers.common["Authorization"];
-        localStorage.removeItem("jwt");
-        window.location.href = "/";
-    };
+// export function LogoutLink() {
+//     const params = useParams();
+//     const [logoutClicked, setLogoutClicked] = useState(false);
 
-    return (
-        <a href="#" onClick={handleClick}>
-            Logout
-        </a>
-    );
-}
+//     const handleClick = (event) => {
+//         if (!logoutClicked) {
+//             setLogoutClicked(true);
+
+//             delete axios.defaults.headers.common["Authorization"];
+//             localStorage.removeItem("jwt");
+//             window.location.href = "/home";
+//         }
+//     };
+
+//     return (
+//        <button onClick={handleClick}>Logout</button>
+//     );
+// }

@@ -7,10 +7,10 @@ import { Modal } from "./Modal";
 import { CarsShow } from "./CarsShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
-import { LogoutLink } from "./Logout";
+// import { Logout } from "./Logout";
 import { BookingsIndex } from "./BookingsIndex";
 import { Home } from "./Home";
-// import { Header } from "./Header";
+
 
 export function Content() {
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,18 +21,6 @@ export function Content() {
   const [bookings, setBookings] = useState([]);
   const [isBookingsShowVisible, setIsBookingsShowVisible] = useState(false);
   const [currentBooking, setCurrentBooking] = useState({});
-
-
-  // useEffect(() => {
-  //   const jwt = localStorage.getItem("jwt");
-  //   setIsAuthenticated(!!jwt); // set isAuthenticated to TRUE if JWT exists
-  //   console.log("this in content", isAuthenticated);
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log("isAuthenticated changed in Content:", isAuthenticated);
-  // }, [isAuthenticated]);
-  
 
   const handleIndexCars = () => {                                           //function to fetch list of cars from backend
     console.log("handleIndexCars");
@@ -91,7 +79,7 @@ export function Content() {
           <Route path="/home" element={<Home />} />
           <Route path="/signup" element={<Signup />} />}
           <Route path="/login" element={<Login />} />}
-          <Route path="/logout" element={<LogoutLink />} />}
+          {/* <Route path="/logout" element={<Logout />} />} */}
           <Route path="/cars" element={<CarsIndex cars={cars} onCreateBooking={handleCreateBooking} onShowCar={handleShowCar} />} />
           <Route path="/cars/:id" element={<CarsShow />} />
           <Route path="/bookings" element={<BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} /> } />

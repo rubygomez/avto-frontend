@@ -1,8 +1,12 @@
-import { Dropdown } from "bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export function Header() {
- 
+  const handleLogout = () => {
+    delete axios.defaults.headers.common["Authorization"];
+    localStorage.removeItem("jwt");
+    window.location.href = "/home";
+  };
   
     return (
       <header>
@@ -33,9 +37,10 @@ export function Header() {
                 </li>
               </ul>
             </div>
-            <div className="dropdown">
+            {/* button dropdown */}
+            {/* <div className="dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Button
+                button
               </button>
               <ul className="dropdown-menu">
                 <li><a className="dropdown-item" href="#">1</a></li>
@@ -44,17 +49,25 @@ export function Header() {
 
               </ul>
 
-            </div>
+            </div> */}
+
+            {/* user accounts */}
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to="/signup" className="nav-link signup-link"> Sign Up</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link text-dark login-link">Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/logout" className="nav-link text-dark logout-link">Logout</Link>
-              </li>
+              {!localStorage.getItem("jwt") && (
+                <>
+                  <li className="nav-item">
+                    <Link to="/signup" className="nav-link signup-link"> Sign Up</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link text-dark login-link">Login</Link>
+                  </li>
+                </>
+              )}
+              {localStorage.getItem("jwt") && (
+                <li className="nav-item">
+                  <Link to="/logout" className="nav-link text-dark logout-link" onClick={handleLogout}>Logout</Link>
+                </li>
+              )}
             </ul>
           </div>
         </nav>
