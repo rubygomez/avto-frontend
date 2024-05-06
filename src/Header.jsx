@@ -32,25 +32,8 @@ export function Header() {
                 <li className="nav-item">
                   <Link to="/bookings" className="nav-link text-dark">My Bookings</Link>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link text-dark" href="#">Pricing</a>
-                </li>
               </ul>
             </div>
-            {/* button dropdown */}
-            {/* <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                button
-              </button>
-              <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">1</a></li>
-                <li><a className="dropdown-item" href="#">2</a></li>
-                <li><a className="dropdown-item" href="#">3</a></li>
-
-              </ul>
-
-            </div> */}
-
             {/* user accounts */}
             <ul className="navbar-nav">
               {!localStorage.getItem("jwt") && (
@@ -65,7 +48,7 @@ export function Header() {
               )}
               {localStorage.getItem("jwt") && (
                 <li className="nav-item">
-                  <Link to="/logout" className="nav-link text-dark logout-link" onClick={handleLogout}>Logout</Link>
+                  <Link to="/logout" className="nav-link logout-link" onClick={handleLogout}>Logout</Link>
                 </li>
               )}
             </ul>

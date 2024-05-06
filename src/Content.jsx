@@ -7,13 +7,11 @@ import { Modal } from "./Modal";
 import { CarsShow } from "./CarsShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
-// import { Logout } from "./Logout";
 import { BookingsIndex } from "./BookingsIndex";
 import { Home } from "./Home";
 
 
 export function Content() {
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [cars, setCars] = useState([]);                                     //defines state variable "cars". defines function "setCars" to handle updates
   const [isCarsShowVisible, setIsCarsShowVisible] = useState(false);
   const [carData, setCarData] = useState(null);
@@ -68,7 +66,6 @@ export function Content() {
   };
 
 
-
   useEffect(handleIndexCars, []);                                           //useEffect hook: to RUN handleIndexCars
   useEffect(handleIndexBookings, []);
 
@@ -77,12 +74,12 @@ export function Content() {
       <main>
         <Routes>
           <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />}
           <Route path="/login" element={<Login />} />}
-          {/* <Route path="/logout" element={<Logout />} />} */}
           <Route path="/cars" element={<CarsIndex cars={cars} onCreateBooking={handleCreateBooking} onShowCar={handleShowCar} />} />
           <Route path="/cars/:id" element={<CarsShow />} />
-          <Route path="/bookings" element={<BookingsIndex bookings={bookings} onShowBooking={handleShowBooking} /> } />
+          <Route path="/bookings" element={<BookingsIndex bookings={bookings} setBookings={setBookings} /> } />
         </Routes> 
         <div className="container">
           <Modal show={isCarsShowVisible} onClose={handleCarClose}>
