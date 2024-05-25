@@ -45,7 +45,7 @@ export function Content() {
       }
     });
   } else {
-    console.log("now jwt token found - not fetching bookings");
+    console.log("no jwt token found - not fetching bookings");
     setBookings([]);
   }
   };
