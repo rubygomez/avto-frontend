@@ -8,7 +8,7 @@ import { CarsShow } from "./CarsShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { BookingsIndex } from "./BookingsIndex";
-import { Home } from "./Home"; 
+import { Home } from "./Home";
 
 
 export function Content() {
@@ -30,24 +30,10 @@ export function Content() {
   };
   const handleIndexBookings = () => {                                           
     console.log("handleIndexBookings");
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      axios.defaults.headers.common["authorization"] = `Bearer ${jwt}`;
-      axios.get("http://localhost:3000/bookings.json").then((response) => {       
+    axios.get("http://localhost:3000/bookings.json").then((response) => {       
       console.log(response.data);
-      setBookings(response.data);
-    })
-    .catch((error) => {
-      if (error.response && error.response.status === 401) {
-        console.log("Unathourazed access - user might be logged out");
-      } else {
-        console.error("Unexpected error:;;;;;", error);
-      }
+      setBookings(response.data);                                                
     });
-  } else {
-    console.log("no jwt token found - not fetching bookings");
-    setBookings([]);
-  }
   };
 
   const handleShowCar = (car) => {

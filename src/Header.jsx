@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-import './index.css';
+import { useEffect, useState } from "react";
 
 export function Header() {
   const handleLogout = () => {
@@ -8,6 +8,15 @@ export function Header() {
     localStorage.removeItem("jwt");
     window.location.href = "/home";
   };
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+      setIsLoggedIn(true);
+    }
+  }, []);
   
     return (
       <header>
@@ -33,7 +42,8 @@ export function Header() {
                 <li className="nav-item">
                   <Link to="/cars" className="nav-link text-light">Cars</Link>
                 </li>
-                {localStorage.getItem("jwt") && (
+                {/* removes bookings when logged out */}
+                {isLoggedIn && (
                   <li className="nav-item">
                     <Link to="/bookings" className="nav-link text-light">My Bookings</Link>
                   </li>
