@@ -1,14 +1,14 @@
 import axios from "axios";
 import "./index.css";
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { CarsIndex } from "./CarsIndex";
 import { Modal } from "./Modal";
 import { CarsShow } from "./CarsShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { BookingsIndex } from "./BookingsIndex";
-import { Home } from "./Home";
+import { Home } from "./Home"; 
 
 
 export function Content() {
@@ -19,6 +19,7 @@ export function Content() {
   const [bookings, setBookings] = useState([]);
   const [isBookingsShowVisible, setIsBookingsShowVisible] = useState(false);
   const [currentBooking, setCurrentBooking] = useState({});
+  const totalCost = 0;
 
   const handleIndexCars = () => {                                           //function to fetch list of cars from backend
     console.log("handleIndexCars");
@@ -29,10 +30,24 @@ export function Content() {
   };
   const handleIndexBookings = () => {                                           
     console.log("handleIndexBookings");
-    axios.get("http://localhost:3000/bookings.json").then((response) => {       
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      axios.defaults.headers.common["authorization"] = `Bearer ${jwt}`;
+      axios.get("http://localhost:3000/bookings.json").then((response) => {       
       console.log(response.data);
-      setBookings(response.data);                                                
+      setBookings(response.data);
+    })
+    .catch((error) => {
+      if (error.response && error.response.status === 401) {
+        console.log("Unathourazed access - user might be logged out");
+      } else {
+        console.error("Unexpected error:;;;;;", error);
+      }
     });
+  } else {
+    console.log("now jwt token found - not fetching bookings");
+    setBookings([]);
+  }
   };
 
   const handleShowCar = (car) => {
@@ -77,7 +92,7 @@ export function Content() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />}
           <Route path="/login" element={<Login />} />}
-          <Route path="/cars" element={<CarsIndex cars={cars} onCreateBooking={handleCreateBooking} onShowCar={handleShowCar} />} />
+          <Route path="/cars" element={<CarsIndex cars={cars} onCreateBooking={handleCreateBooking} onShowCar={handleShowCar} totalCost={totalCost} /> }/>
           <Route path="/cars/:id" element={<CarsShow />} />
           <Route path="/bookings" element={<BookingsIndex bookings={bookings} setBookings={setBookings} /> } />
         </Routes> 

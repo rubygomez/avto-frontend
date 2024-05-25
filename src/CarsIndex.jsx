@@ -47,7 +47,12 @@ export function CarsIndex(props) {
 
     return (
         <div>
-            <h1>Book your next ride now!</h1>
+            <img 
+                src="https://images.pexels.com/photos/326259/pexels-photo-326259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="cars index img"
+                className="cars-index-img"
+            />
+            <h1>Book your next ride now</h1>
             <div className="row row-cols-1 row-cols-md-3">
                 {props.cars.map((car) => (
                     <div key={car.id} className="col mb-">
@@ -75,7 +80,7 @@ export function CarsIndex(props) {
             <Modal show={modalOpen} onClose={() => setModalOpen(false)}>
                 <div className="confirm-modal">
                     <h2>Confirm Booking</h2>
-                    <p>{selectedCar && `${selectedCar.year} ${selectedCar.make} ${selectedCar.model}` }</p>
+                    <h3>{selectedCar && `${selectedCar.year} ${selectedCar.make} ${selectedCar.model}` }</h3>
                     <form onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="book_start">Start Date:</label>
@@ -103,7 +108,7 @@ export function CarsIndex(props) {
                         </div>
                         <div>
                             {/* <p>{selectedCar.rate}/day</p> */}
-                            <p>Total: {totalCost}</p>
+                            <p>Total: ${totalCost}</p>
                         </div>
                         <button type="button" onClick={calculateTotal}>Calculate</button>
                         <button type="submit">Confirm Booking</button>

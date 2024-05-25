@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
+import './index.css';
 
 export function Header() {
   const handleLogout = () => {
@@ -15,7 +16,7 @@ export function Header() {
             <div className="row">
               <div className="col text-center">
                 <div className="avto-brand">
-                  <Link to="/home" className="nav-link text-dark" style={{fontSize: "50px"}}>A V T O</Link>
+                  <Link to="/home" className="nav-link text-light" style={{fontSize: "40px"}}>a v t o</Link>
                 </div>
               </div>
               <div className="col-auto">
@@ -27,11 +28,16 @@ export function Header() {
             <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link to="/cars" className="nav-link text-dark">All Vroomz</Link>
+                  <Link to="/home" className="nav-link text-light">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/bookings" className="nav-link text-dark">My Bookings</Link>
+                  <Link to="/cars" className="nav-link text-light">Cars</Link>
                 </li>
+                {localStorage.getItem("jwt") && (
+                  <li className="nav-item">
+                    <Link to="/bookings" className="nav-link text-light">My Bookings</Link>
+                  </li>
+                )}
               </ul>
             </div>
             {/* user accounts */}
@@ -42,13 +48,13 @@ export function Header() {
                     <Link to="/signup" className="nav-link signup-link"> Sign Up</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/login" className="nav-link text-dark login-link">Login</Link>
+                    <Link to="/login" className="nav-link text-light login-link">Login</Link>
                   </li>
                 </>
               )}
               {localStorage.getItem("jwt") && (
                 <li className="nav-item">
-                  <Link to="/logout" className="nav-link logout-link" onClick={handleLogout}>Logout</Link>
+                  <Link to="/logout" className="nav-link logout-link text-light" onClick={handleLogout}>Logout</Link>
                 </li>
               )}
             </ul>

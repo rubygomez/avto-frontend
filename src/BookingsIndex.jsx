@@ -54,16 +54,21 @@ export function BookingsIndex(props) {
             <div className="row row-cols-1 row-cold-md-3 g-4">
                 {props.bookings.map((booking) => (
                     <div key={booking.id} className="col mb-4">
-                        <div className="card mb-3" style={{ width: "540px"}}>
+                        <div className="card mb-3" style={{ maxWidth: "100%", width: "600px", height: "175px"}}>
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                    <img src={booking.car.image_url} className="img-fluid rounded-start" alt="car-image" />
+                                    <img 
+                                    src={booking.car.image_url} 
+                                    className="img-fluid rounded-start" 
+                                    alt="car-image" 
+                                    style={{ width: "100%", height: "170px"}} />
                                 </div>
                                 <div className="col-md-8">
-                                    <div className="card-body">
+                                    <div className="card-body" style={{paddingBottom: "-30px"}}>
                                         {booking.car && 
                                             <>
                                                 <h3 className="card-title">{booking.car.year} {booking.car.make} {booking.car.model}</h3>
+                                                <h4>Total: </h4>
                                             </>
                                         }
                                         <p className="card-text">{formatDate(booking.book_start)} to {formatDate(booking.book_end)}</p>
