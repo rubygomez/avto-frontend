@@ -1,3 +1,6 @@
+/* rangkor "avto", k2d, and rakkas */
+@import url('https://fonts.googleapis.com/css2?family=Angkor&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Rakkas&display=swap');
+
 html, body, #root {
   scroll-behavior: smooth;
   height: 100%;
@@ -11,64 +14,87 @@ main {
 
 /* AVTO brand */
 .avto-brand {
-  font-family:'Chonburi', serif;
-  /* font-family: "Rakkas", serif;
+  font-family:'Angkor', serif;
   font-weight: 400;
-  font-style: normal; */
+  font-style: normal;
 }
 
 /* Signup Link */
 .navbar .nav-item .nav-link.signup-link {
-  font-family: "Source Code Pro", monospace;
+  font-family: "Rakkas", sans-serif;
   font-optical-sizing:auto;
-  font-weight: 300;
+  font-weight: 600;
   font-style: normal;
-  color: white;
-  border: 4px;
-  border-bottom: 2px;
-  padding: 10px;
-  background-color: black;
-  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  margin-top: 9px;
+  background-color: #627368;
+  border-radius: 8px;
 }
 
 /* Signup Hover  */
 .navbar .nav-item .nav-link.signup-link:hover {
   /* background-color: rgba(101, 101, 101, 0.59); */
-  background-color: rgb(134, 42, 42);
-  color: white;
-  border-color: white;
+  background-color: #645955;
 }
 
 /* Login Link */
 .navbar .nav-item .nav-link.login-link {
-  font-family: "Source Code Pro", monospace;
-  font-optical-sizing:șuto;
-  font-weight: 300;
+  color: black;
+  font-family: "Rakkas", sans-serif;
+  font-optical-sizing:auto;
+  font-weight: 600;
   font-style: normal;
-  border: 2px;
-  border-style: solid;
-  border-radius: 20px;
-  border-color: rgb(0, 0, 0);
+  border: transparent;
+  border-radius: 8px;
+  padding: 10px 18px;
+  margin-top: 9px;
 }
 
 /* Login Hover */
 .navbar .nav-item .nav-link.login-link:hover {
-  background-color: rgb(134, 42, 42);
+  color: #ffffff;
+  background-color: #6459552b;
+  border-radius: 8px;
+  padding: 10px 18px;
+  margin-top: 8px;
+
+}
+
+/* logout link */
+.navbar .nav-item .nav-link.logout-link {
+  font-family: 'K2D', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: black;
+}
+/* home, cars, services, and bookings */
+.navbar-nav .nav-link {
+  margin-right: 30px;
+  font-family: "K2D", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 5px;
+  padding-top: 18px;
+
+}
+
+/* moves navbar to the right */
+.justify-content-right {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 40px;
 }
 
 /* home image */
-body {
+/* body {
   width: 100%;
   background-image: url("https://i.pinimg.com/736x/6c/e8/cd/6ce8cd1e6f8874d45c92ad286ac79393.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-}
-/* .img-container {
-  background-image: url("https://images.pexels.com/photos/3826436/pexels-photo-3826436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 } */
+
 
 /* cars index img */
 .cars-index-img {
@@ -91,16 +117,42 @@ body {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
-.navbar .nav-item .nav-link.logout-link {
-  font-family: 'Josefin Sans', sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-  color: black;
+/* search form */
+.container.mt-5 {
+  border: #645955;
+  border-style:solid;
+  border-radius: 14px;
+  padding-top: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
+
+input {
+  border-style: hidden;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#location, #start-date, #end-date {
+  border-style: hidden;
+}
+
+#location:focus, #start-date:focus, #end-date:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 
 
 /* copyright text */
@@ -113,3 +165,4 @@ footer {
   text-align: center;
   padding: 20px;
 }
+

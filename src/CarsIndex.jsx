@@ -47,11 +47,26 @@ export function CarsIndex(props) {
 
     return (
         <div>
-            <img 
-                src="https://images.pexels.com/photos/326259/pexels-photo-326259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="cars index img"
-                className="cars-index-img"
-            />
+            <div className="container mt-5">
+                <form>
+                    <div className="row g-3">
+                        <div className="col-md-4">
+                            <label for="location" className="form-label">Location</label>
+                            <input type="text" className="form-control" id="location" placeholder="Enter location"/>
+                        </div>
+                        <div className="col-md-4">
+                            <label for="start-date" className="form-label">Start Date</label>
+                            <input type="date" className="form-control" id="start-date"/>
+                        </div>
+                        <div className="col-md-4">
+                            <label for="end-date" className="form-label">End Date</label>
+                            <input type="date" className="form-control" id="end-date"/>
+                        </div>
+                    </div>
+                    <button type="submit" className="btn btn-primary mt-3">Search</button>
+                </form>
+            </div>
+
             <h1>Book your next ride now</h1>
             <div className="row row-cols-1 row-cols-md-3">
                 {props.cars.map((car) => (
@@ -59,14 +74,14 @@ export function CarsIndex(props) {
                         <div className="card" style={{ maxWidth: "540px"}}>
                             <div className="row g-0">
                                 <div style={{ maxHeight: "200px", width: "100%"}}>  
-                                    <img src={car.image_url} className="img-fluid rounded-start" alt={`${car.year} ${car.make} ${car.model}`} style={{ width:"100%", height: "200px", objectFit:"cover" }} />
+                                    <img src={car.image_url} className="img-fluid rounded-start" alt={`${car.year} ${car.make} ${car.model}`} style={{ width:"100%", height: "200px", objectFit:"cover", borderRadius: "10px" }} />
                                 </div>
-                                <div className="col-md-8">
+                                <div className="col-md-8" style={{ fontSize: "0.9rem" }}>
                                     <div className="card-body">
                                         <h5 className="card-title">{car.year} {car.make} {car.model}</h5>
-                                        <p className="card-text"><strong>Description:</strong></p>
+                                        {/* <p className="card-text"><strong>Description:</strong></p>
                                     
-                                        <p className="card-text">Transmission: {car.transmission}</p>
+                                        <p className="card-text">Transmission: {car.transmission}</p> */}
                                         <p className="card-text">Rate: ${car.rate}/hour</p>
                                         <button onClick={() => handleBookNow(car)}>Book Now</button>
                                         {/* <button onClick={() => props.onShowCar(car)}>More Info</button> */}
